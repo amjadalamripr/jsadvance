@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Division Calculator</title>
+</head>
+<body style="background-color: antiquewhite;">
+ <center>
+        <h1>Division Calculator</h1>
+        <form>
+        <label for="num1">Enter first number:</label><br>
+        <input type="number" id="num1" name="num1"><br><br>
+
+        <label for="num2">Enter second number:</label><br>
+        <input type="number" id="num2" name="num2"><br><br>
+
+        <input type="button" value="Divide" onclick="divide()">
+
+        <p id="res"> </p>
+      <a href="catchtry.html">Go to First page</a>
+
+        </form>
+</center>
+<script src="logic.js"></script>
+<script src="onclick.js"></script>
+<script>
+
+     function divide(){
+      var num1 = document.getElementById("num1").value;
+       var num2 = document.getElementById("num2").value;
+       try{
+
+       let result = divideNumbers(num1,num2)
+       document.getElementById("res").innerHTML="The result is: " + result;
+      
+      }
+
+
+
+catch(error){
+      alert(error);
+}}
+
+</script>
+
+</body>
+</html>
