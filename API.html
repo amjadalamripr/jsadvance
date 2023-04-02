@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #6B5B95;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #A8DADC;
+}
+
+tr:hover {
+  background-color: #f0e8f7;
+}
+
+td {
+  border-bottom: solid #6B5B95 1px;
+}
+    </style>
+</head>
+<body>
+    <table id="table" border="2">
+      
+         <th>Number</th>
+         <th>Subject</th>
+         <th>Text</th>
+    </table>
+ <script>
+    let request=new XMLHttpRequest()//استدعاء اوبجكت الطلب من الكلاس
+    request.open("GET","https://jsonplaceholder.typicode.com/posts")//تحديد العناصر المطلوبة من الطلب
+    request.responseType="json"//تعامل معها كجسون 
+    request.send()//send the request
+    request.onload=function(){
+        
+    let posts=request.response// getting data from api
+        let counter = 0; // initialize counter variable
+
+        for(post of posts){
+        if (counter === 10) { // check if counter has reached 10
+        break; // exit the loop
+      }
+           
+        document.getElementById("table").innerHTML+=`
+        
+          
+           <td>${post.id}</td>
+           <td>${post.title}</td>
+           <td>${post.body}</td>
+        
+        `
+        counter++
+    }
+    }
+ </script>   
+</body>
+</html>
