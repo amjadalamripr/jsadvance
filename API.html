@@ -44,31 +44,176 @@ td {
          <th>Text</th>
     </table>
  <script>
-    let request=new XMLHttpRequest()//استدعاء اوبجكت الطلب من الكلاس
-    request.open("GET","https://jsonplaceholder.typicode.com/posts")//تحديد العناصر المطلوبة من الطلب
-    request.responseType="json"//تعامل معها كجسون 
-    request.send()//send the request
-    request.onload=function(){
-        
-    let posts=request.response// getting data from api
-        let counter = 0; // initialize counter variable
+//get
+  function getpost(){
+          let request=new XMLHttpRequest()//استدعاء اوبجكت الطلب من الكلاس
+          request.open("GET","https://jsonplaceholder.typicode.com/posts")//تحديد العناصر المطلوبة من الطلب
+          request.responseType="json"//تعامل معها كجسون 
+          request.send()//send the request
+          request.onload=function(){
+            //check status 
+            if(request.status >= 200 && request.status <300){
+              let posts=request.response// getting data from api
+              let counter = 0; // initialize counter variable
 
-        for(post of posts){
-        if (counter === 10) { // check if counter has reached 10
-        break; // exit the loop
-      }
-           
-        document.getElementById("table").innerHTML+=`
-        
+              for(post of posts){
+              if (counter === 10) { // check if counter has reached 10
+              break; // exit the loop
+            }
+                
+              document.getElementById("table").innerHTML+=`
+              
+                
+                <td>${post.id}</td>
+                <td>${post.title}</td>
+                <td>${post.body}</td>
+              
+              `
+              counter++
+          }
+    }
+      else{
+        alert("error")
+      }}
+  
+  }
+   
+
+
+
+          function createpost(tit,bo,id){
+
+                  let request=new XMLHttpRequest()//استدعاء اوبجكت الطلب من الكلاس
+                  request.open("POST","https://jsonplaceholder.typicode.com/posts")//تحديد العناصر المطلوبة من الطلب
+                  request.responseType="json"//تعامل معها كجسون 
+                  request.setRequestHeader("Accept","application/json")
+                  request.setRequestHeader("Content-type","application/json")
+                  let bodybar = JSON.stringify({ 
+                    //This code is creating a JSON object called "bodybar" with three properties: "title", "body", and "userId". The values for these properties are being passed in as variables called "tit", "bo", and "id" respectively. 
+                    //The JSON.stringify() method is then being used to convert this object into a string so that it can be sent as data in an HTTP request or stored in a database.
+                  title: tit,
+                  body: bo,
+                  userId: id
+                  });
+                  request.send(bodybar)//send the request
+                  request.onload=function(){
+                    //check status 
+                    if(request.status >= 200 && request.status <300){
+                      let posts=request.response// getting data from api
+                      console.log(posts)
+                        document.getElementById("table").innerHTML+=`
+                      
+                        
+                        <td>${posts.id}</td>
+                        <td>${posts.title}</td>
+                        <td>${posts.body}</td>
+                      
+                      `
+                      
+                    
+                  
+            }
+              else{
+                alert("error")
+              }}
           
-           <td>${post.id}</td>
-           <td>${post.title}</td>
-           <td>${post.body}</td>
+          }
+
+           //update
+            function update(){
+                  let request=new XMLHttpRequest()//استدعاء اوبجكت الطلب من الكلاس
+                  request.open("PUT","https://jsonplaceholder.typicode.com/posts/1")//تحديد العناصر المطلوبة من الطلب
+                  request.responseType="json"//تعامل معها كجسون 
+                  request.setRequestHeader("Accept","application/json")
+                  request.setRequestHeader("Content-type","application/json")
+                  let bodybar = `{
+                  "title": "AMJAD",
+                    "body": "bar",
+                    "userId": 1
+                  }`
+                  request.send(bodybar)//send the request
+                  request.onload=function(){
+                
+                      //check status 
+                    if(request.status >= 200 && request.status <300){
+                      let posts=request.response// getting data from api
+                      console.log(posts)
+                        document.getElementById("table").innerHTML+=`
+                      
+                        
+                        <td>${posts.id}</td>
+                        <td>${posts.title}</td>
+                        <td>${posts.body}</td>
+                      
+                      `
+                      
+                    
+                  
+            }
+              else{
+                alert("error")
+              }}
+          
+            }
+        //delete
+            function deletepost(){
+          let request=new XMLHttpRequest()//استدعاء اوبجكت الطلب من الكلاس
+          request.open("DELETE","https://jsonplaceholder.typicode.com/posts/20")//تحديد العناصر المطلوبة من الطلب
+          request.responseType="json"//تعامل معها كجسون 
+          request.setRequestHeader("Accept","application/json")
+          request.setRequestHeader("Content-type","application/json")
         
-        `
-        counter++
+          request.send()//send the request
+          request.onload=function(){
+         
+               //check status 
+            if(request.status >= 200 && request.status <300){
+              let posts=request.response// getting data from api
+              alert("Delete has been successfully")
     }
+      else{
+        alert("error")
+      }}
+  
+    } 
+
+    //filter
+     function getpostfilter(){
+          let request=new XMLHttpRequest()//استدعاء اوبجكت الطلب من الكلاس
+          request.open("GET","https://jsonplaceholder.typicode.com/posts?userId=1")//تحديد العناصر المطلوبة من الطلب
+          request.responseType="json"//تعامل معها كجسون 
+          request.send()//send the request
+          request.onload=function(){
+            //check status 
+            if(request.status >= 200 && request.status <300){
+              let posts=request.response// getting data from api
+            
+
+              for(post of posts){
+            
+                
+              document.getElementById("table").innerHTML+=`
+              
+                
+                <td>${post.id}</td>
+                <td>${post.title}</td>
+                <td>${post.body}</td>
+              
+              `
+              
+          }
     }
+      else{
+        alert("error")
+      }}
+  
+  }
+   
+    //getpost()
+    // createpost("Amjad","Moha",12)
+    // update()
+    // deletepost()
+    // getpostfilter()
  </script>   
 </body>
 </html>
