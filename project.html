@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Circle Page</title>
+  <style type="text/css">
+    body {
+      background-color: rgb(119, 56, 119);
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    
+    .left {
+      padding-top:40%;
+      width: 40vw;
+      background-color: #e6e6e6;
+      padding: 20px;
+      flex-direction: column;
+      align-items: left;
+      justify-content: center;
+      padding-left: 5%;
+      margin-top:5%;
+    }
+    
+    .circle {
+      height: 40px;
+      width:15vw;
+      border-radius: 20px;
+      background-color: white;
+      margin-bottom: 10px;
+        align-items:center; 
+        justify-content:left; 
+        cursor:pointer; 
+        border-width:1px; 
+        border-style:solid; 
+        border-color:orange;
+        padding: 2%;
+    }
+    
+    .circle:hover {
+       background-color: orange;
+     }
+     
+     p {
+       margin-left: 10px;
+     }
+     
+     h1 {
+       text-align:center; 
+       color:white; 
+       font-size:50px; 
+       padding-top:50px; 
+     }
+     
+     .right{
+       width:60vw; 
+       height:auto; 
+       background-color:orange; 
+       padding-top:4%; 
+       padding-right :5%;  
+       margin-top:5%;
+     }  
+     
+   </style>
+</head>
+
+<body>
+
+<div class="left" id="left">
+
+
+  
+</div>
+
+<div class="right" id="right">
+  
+</div>
+
+
+    <script>
+ 
+let users=[
+    {
+        id:1,
+        username:"Amjad",
+        email:"Amjad@gmail.com"
+    },
+    {
+        id:2,
+        username:"Ahmed",
+        email:"Ahmed@gmail.com"
+    }, 
+    { 
+        id:3, 
+        username:"Nasser", 
+        email:"Nasser@gmail.com" 
+    }, 
+    { 
+        id:4, 
+        username:"Ali", 
+        email:"Ali@gmail.com" 
+    },   {   id:5,   username:"Dalal",   email:"Dalal@gmail.com" } ]
+
+
+        for(use of users){
+
+       let iduser=use.id;
+       
+       document.getElementById("left").innerHTML+=`
+
+       <div class="circle" id="${iduser}" onclick="fun(${iduser})"> 
+        ${use.username}<br>${use.email}
+         <br> ${iduser}</div>`; 
+          
+
+         function fun(id){ //function to display id of user when clicked. 
+
+          let request = new XMLHttpRequest(); 
+          request.open("GET", `https://jsonplaceholder.typicode.com/posts/?userId=${id}`);
+          request.responseType = "json"; 
+          request.send(); 
+          request.onload = function(){ 
+          let posts = request.response;
+          document.getElementById("right").innerHTML=" "
+         for(post of posts){
+
+                document.getElementById("right").innerHTML += post.title;
+        }
+
+ }  
+
+ }
+
+}
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
