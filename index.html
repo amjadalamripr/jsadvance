@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>مواقيت الصلاة</title>
+ <script src="node_modules/axios/dist/axios.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Manrope:wght@500&family=Noto+Kufi+Arabic:wght@300&family=Noto+Naskh+Arabic:wght@700&family=Noto+Sans+Arabic:wght@300&family=Tajawal:wght@300;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>   
+
+  body {
+    background-image: url("https://1.bp.blogspot.com/-i5dFvgsycVI/WZCHHNLsOSI/AAAAAAAALJk/sqiXIZS-joU5T037chImzoNzTglr99UXwCLcBGAs/s1600/001_1479879646_f001_c4d639875_o.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+   font-family: Arial, sans-serif;
+   font-size: 16px;
+   color: #040404;
+   direction: rtl;
+   /* background-color: rgb(199, 173, 199); */
+  }
+  h3 {
+  color: white;
+   text-align: right;
+    font-weight: bolder;
+    font-family: 'Gloock', serif;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-family: 'Tajawal', sans-serif;
+        
+  }
+  #time {
+ background-color: rgba(95, 95, 95, 0.499);
+  font-size: larger;
+  color: rgba(249, 233, 233, 0.866);
+   padding: 10px;
+   height:10vh ;
+   margin-bottom: 20px;
+   text-align: center;
+    font-weight: bolder;
+    font-family: 'Gloock', serif;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-family: 'Tajawal', sans-serif;
+        }
+   #city {
+  display: inline-block;
+}
+
+  
+  table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-bottom: 20px;
+   
+  }
+  th, td {
+     background-color: rgba(95, 95, 95, 0.499);
+     padding: 10px;
+     text-align: right;
+    color: rgba(244, 243, 243, 0.774);
+    justify-content: space-between;
+    height: 10vh;
+    font-size: larger;
+    font-weight: bolder;
+    font-family: 'Gloock', serif;
+    font-family: 'Manrope', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Noto Naskh Arabic', serif;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-family: 'Tajawal', sans-serif;
+        }
+        td span {
+    float: left;
+}
+        th{
+         background-color:#ddd;
+
+        }
+        .icon{
+         display:inline-block; 
+         width:10vw; 
+         height:10vh
+        }
+        span{
+            text-align: left;
+       justify-content: space-between;
+        }
+        #date{
+            direction: ltr;
+        }
+        
+    </style>
+</head>
+<body>
+<h3 id="date">الخميس</h3>
+<div id="time">
+    <center>
+ <h3  id="city"></h3>
+</center>
+   
+</div>
+
+<table>
+ 
+
+    <tr>
+        <td  colspan="2"> 
+<i class="fa-solid fa-moon fa-flip-horizontal" style="color: #1d3861;"></i>
+          الفجر
+<span id="fajr">00:00</span>
+        </td>
+       
+    </tr>
+
+    <tr>
+        <td  colspan="2">
+<i class="fa-sharp fa-regular fa-sun" style="color: #f9da6c;"></i>            الشروق
+               <span id="Sunrise">00:00</span>
+        </td>
+   
+    </tr>
+
+    <tr>
+        <td  colspan="2">
+            <i class="fa-sharp fa-solid fa-sun" style="color: #e3c324;"></i>
+            الظهر
+               <span id="dhuhr">00:00</span>
+        </td>
+       
+    </tr>
+
+    <tr>
+        <td  colspan="2">
+            <i class="fa-solid fa-cloud-moon fa-flip-horizontal" style="color: #cf7a31;"></i>
+            العصر
+               <span id="asr">00:00</span>
+        </td>
+      
+    </tr>
+
+    <tr>
+        <td  colspan="2">
+<i class="fa-solid fa-cloud-sun" style="color: #4269ae;"></i>            المغرب
+
+
+               <span id="maghrib">00:00</span>
+        </td>
+   
+    </tr>
+
+    <tr>
+        <td colspan="2" >
+            <i class="fa-solid fa-cloud" style="color: #284880;"></i>
+            العشاء
+
+
+
+
+               <span id="isha">00:00</span>
+        </td>
+        
+        </tr>
+        <tr>
+        <td  colspan="2">
+            <i class="fa-solid fa-person-praying"></i>
+            ثلث الليل الاخير
+
+               <span id="Lastthird">00:00</span>
+        </td>
+      
+   </tr>
+   </table>
+   </body>
+   <script>
+//
+
+
+let city = prompt("أدخل مكان إقامتك");
+let currentDate = new Date().toLocaleDateString('en-GB').replace(/\//g, '-');
+
+axios.get(`http://api.aladhan.com/v1/timingsByAddress/${currentDate}?address=${city}`)
+  .then(response => {
+      console.log(`http://api.aladhan.com/v1/timingsByAddress/${currentDate}?address=${city}`)
+    const data = response.data.data;
+    const date = data.date.hijri.date;
+     const day = data.date.hijri.weekday.ar
+    document.getElementById("date").innerHTML = `${day}<br>${date}`;
+    document.getElementById("city").innerHTML = city;
+
+    // extract prayer times from data object
+    const fajrTime = data.timings.Fajr;
+    const dhuhrTime = data.timings.Dhuhr;
+    const asrTime = data.timings.Asr;
+    const maghribTime = data.timings.Maghrib;
+    const ishaTime = data.timings.Isha;
+    const Sunrise=data.timings.Sunrise
+    const Lastthird=data.timings.Lastthird
+    // display prayer times on page
+    document.getElementById("fajr").innerHTML = fajrTime;
+    document.getElementById("Sunrise").innerHTML = Sunrise;
+    document.getElementById("dhuhr").innerHTML = dhuhrTime;
+    document.getElementById("asr").innerHTML = asrTime;
+    document.getElementById("maghrib").innerHTML = maghribTime;
+    document.getElementById("isha").innerHTML = ishaTime;
+    document.getElementById("Lastthird").innerHTML = Lastthird;
+  })
+  .catch(error => {
+    alert(error);
+  });
+
+
+   </script>
+   </html>
